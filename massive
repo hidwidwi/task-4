@@ -1,0 +1,59 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+int const n = 20;
+int c1 = 0;
+int pervaya(int massive[], int d) {
+	cout << endl;
+	int shuffle[n];
+	cout << massive[0] << " ";
+	for (int i = 1; i < n; i++) {
+		massive[i] = massive[i - 1] + d;
+		cout << massive[i] << " ";
+	}
+	cout << endl << endl;
+	return 0;
+}
+int vtoraya(int massive1[], int N) {
+	srand(time(NULL));
+	int c = 1;
+	for (int i = 0; i < N; i++) {
+		massive1[i] = c;
+		c++;
+	}
+	for (int i = N; i > 1; i--) {
+		int const randomi = rand() % i;
+		int const tmp = massive1[i - 1];
+		massive1[i - 1] = massive1[randomi];
+		massive1[randomi] = tmp;
+	}
+	for (int i = 0; i < N; i++) {
+		cout << massive1[i] << " ";
+	}
+	cout << endl << endl;
+	return 0;
+}
+int tretya(int massive2[], int N) {
+	srand(time(NULL));
+	for (int i = 0; i < N; i++) {
+		massive2[i] = rand() % 1000 + 1000;
+		cout << massive2[i] << " ";
+	}
+	for (int i = 0; i < N; i++) {
+		if (massive2[i] % 2 == 0) {
+			c1++;
+		}
+	}
+	cout << endl << c1 << endl;
+	return 0;
+}
+int main() {
+	int const n = 20;
+	int massive[n];
+	int d, N;
+	cin >> massive[0] >> d >> N;
+	pervaya(massive, d);
+	vtoraya(massive, N);
+	tretya(massive, N);
+	return 0;
+}
