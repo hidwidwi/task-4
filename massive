@@ -40,7 +40,7 @@ int vtoraya(int massive1[], int N) {
 int tretya(int massive2[], int N) {
 	srand(time(NULL));
 	for (int i = 0; i < N; i++) {
-		massive2[i] = rand() % 1000 + 1000;
+		massive2[i] = rand() % 1000 + 1001;
 		cout << massive2[i] << " ";
 	}
 	for (int i = 0; i < N; i++) {
