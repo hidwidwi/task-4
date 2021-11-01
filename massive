@@ -5,7 +5,6 @@ int const n = 20;
 int c1 = 0;
 int pervaya(int massive[], int d) {
 	cout << endl;
-	int shuffle[n];
 	cout << massive[0] << " ";
 	for (int i = 1; i < n; i++) {
 		massive[i] = massive[i - 1] + d;
@@ -15,22 +14,27 @@ int pervaya(int massive[], int d) {
 	return 0;
 }
 int vtoraya(int massive1[], int N) {
-	srand(time(NULL));
-	int c = 1;
-	for (int i = 0; i < N; i++) {
-		massive1[i] = c;
-		c++;
+	if (N > 0 && N <= 20) {
+		srand(time(NULL));
+		int c = 1;
+		for (int i = 0; i < N; i++) {
+			massive1[i] = c;
+			c++;
+		}
+		for (int i = N; i > 1; i--) {
+			int const randomi = rand() % i;
+			int const tmp = massive1[i - 1];
+			massive1[i - 1] = massive1[randomi];
+			massive1[randomi] = tmp;
+		}
+		for (int i = 0; i < N; i++) {
+			cout << massive1[i] << " ";
+		}
+		cout << endl << endl;
 	}
-	for (int i = N; i > 1; i--) {
-		int const randomi = rand() % i;
-		int const tmp = massive1[i - 1];
-		massive1[i - 1] = massive1[randomi];
-		massive1[randomi] = tmp;
+	else if (N < 0 || N > 20) {
+		cout << "Ошибка, введите 20 > N > 0" << endl << endl;
 	}
-	for (int i = 0; i < N; i++) {
-		cout << massive1[i] << " ";
-	}
-	cout << endl << endl;
 	return 0;
 }
 int tretya(int massive2[], int N) {
@@ -48,6 +52,7 @@ int tretya(int massive2[], int N) {
 	return 0;
 }
 int main() {
+	setlocale(LC_ALL, "Russian");
 	int const n = 20;
 	int massive[n];
 	int d, N;
